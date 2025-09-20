@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Truthlens Design System - Trust, Clarity, Empowerment
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors - Truthlens Identity */
+    --background: 0 0% 100%;
+    --foreground: 210 25% 15%;
+
+    /* Trust & Credibility - Deep Blues */
+    --primary: 210 95% 30%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 210 95% 25%;
+    --primary-glow: 210 95% 45%;
+
+    /* Clarity & Freshness - Teal/Aqua */
+    --secondary: 178 65% 45%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-hover: 178 65% 40%;
+    --secondary-glow: 178 65% 60%;
+
+    /* Balance - Soft Grays */
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 15% 55%;
+    --muted-dark: 210 25% 88%;
+
+    /* Interactive Accents */
+    --accent-orange: 25 95% 58%;
+    --accent-green: 120 85% 45%;
+    --accent-warning: 45 95% 55%;
+    --accent-danger: 0 85% 60%;
+
+    /* Status Colors */
+    --verified: 178 65% 45%;
+    --verified-foreground: 0 0% 98%;
+    --suspicious: 25 95% 58%;
+    --suspicious-foreground: 0 0% 98%;
+    --unverified: 0 85% 60%;
+    --unverified-foreground: 0 0% 98%;
+
+    /* UI Elements */
+    --card: 0 0% 100%;
+    --card-foreground: 210 25% 15%;
+    --card-hover: 210 20% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 25% 15%;
+
+    --border: 210 25% 88%;
+    --input: 210 25% 88%;
+    --ring: 210 95% 30%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(210 95% 30%), hsl(210 95% 45%));
+    --gradient-secondary: linear-gradient(135deg, hsl(178 65% 45%), hsl(178 65% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(210 95% 30%) 0%, hsl(178 65% 45%) 100%);
+    --gradient-lens: radial-gradient(circle at center, hsla(210 95% 45% / 0.1), hsla(178 65% 45% / 0.05));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsla(210 25% 15% / 0.08);
+    --shadow-medium: 0 8px 30px hsla(210 25% 15% / 0.12);
+    --shadow-glow: 0 0 40px hsla(210 95% 45% / 0.2);
+    --shadow-lens: 0 0 60px hsla(178 65% 45% / 0.15);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Mode - Maintaining Trust & Clarity */
+    --background: 210 35% 8%;
+    --foreground: 0 0% 98%;
+
+    --primary: 210 95% 55%;
+    --primary-foreground: 210 35% 8%;
+    --primary-hover: 210 95% 60%;
+    --primary-glow: 210 95% 70%;
+
+    --secondary: 178 65% 55%;
+    --secondary-foreground: 210 35% 8%;
+    --secondary-hover: 178 65% 60%;
+    --secondary-glow: 178 65% 70%;
+
+    --muted: 210 25% 15%;
+    --muted-foreground: 210 15% 65%;
+    --muted-dark: 210 25% 12%;
+
+    --card: 210 25% 12%;
+    --card-foreground: 0 0% 98%;
+    --card-hover: 210 25% 15%;
+
+    --popover: 210 25% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --border: 210 25% 20%;
+    --input: 210 25% 20%;
+    --ring: 210 95% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Lens Effect Animation */
+  .lens-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .lens-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-lens);
+    transition: left 0.6s ease;
+  }
+  
+  .lens-effect:hover::before {
+    left: 100%;
+  }
+
+  /* Glow Animation */
+  .glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow-pulse {
+    from {
+      box-shadow: var(--shadow-soft);
+    }
+    to {
+      box-shadow: var(--shadow-glow);
+    }
+  }
+
+  /* Interactive Hover Effects */
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Status Indicators */
+  .status-verified {
+    @apply bg-gradient-to-r from-verified to-secondary-glow text-verified-foreground;
+  }
+  
+  .status-suspicious {
+    background: linear-gradient(135deg, hsl(var(--suspicious)), hsl(var(--accent-warning)));
+    @apply text-suspicious-foreground;
+  }
+  
+  .status-unverified {
+    background: linear-gradient(135deg, hsl(var(--unverified)), hsl(var(--accent-danger)));
+    @apply text-unverified-foreground;
+  }
+
+  /* Progress Animation */
+  .progress-animate {
+    background-size: 200% 100%;
+    animation: progress-shine 2s linear infinite;
+  }
+  
+  @keyframes progress-shine {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}

@@ -1,0 +1,27 @@
+project_id = "nhwrjcgrbfbixolctblu"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+
+[auth]
+enabled = true
+port = 9999
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://localhost:3000"]
+jwt_expiry = 3600
+enable_manual_linking = false
+enable_signup = true
+enable_confirmations = false
+secure_password_change = false
+password_min_length = 6
+enable_anonymous_sign_ins = false
+
+[functions.ai-chat]
+verify_jwt = true
+
+[functions.fetch-news]
+verify_jwt = false
